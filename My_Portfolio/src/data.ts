@@ -37,6 +37,7 @@ export const PROJECTS = [
     image: image1,
     description: "A Blogging website where user can make their own blogs",
     technologies: ["tailwind", "React", "Node.js", "Postgresql"],
+    link:"https://blog-website-one-wheat.vercel.app/signup"
   },
   {
     title: "Payments app",
@@ -44,6 +45,7 @@ export const PROJECTS = [
     description:
       "“A secure and user-friendly payments app enabling seamless transactions and efficient session management with MongoDB and Mongoose.”",
     technologies: ["tailwind", "React", "Node.js", "MongoDB"],
+    link:"https://github.com/hrushi-2003/hrushiPay-project"
   },
   {
     title: "Hotel Menu project",
@@ -51,14 +53,16 @@ export const PROJECTS = [
     description:
       "simple python  project which calculates the total amount to be paid for order you have made ",
     technologies: ["python"],
+    link:"https://github.com/hrushi-2003/hotel-menu-python-project"
   },
   {
-    title: "Portfolio Website",
-    image: image4,
+    title: "Chat Application",
+    image: image3,
     description:
-      "A personal portfolio website showcasing projects, skills, and contact information.",
-    technologies: ["React", "tailwind"],
-  },
+      "A chat application for seamless real time communication",
+    technologies: ["Node.js","socket.io","express","react","tailwind"],
+    link:"https://chatapplication-h1ll.onrender.com"
+  }
 ];
 
 export const CONTACT = {
