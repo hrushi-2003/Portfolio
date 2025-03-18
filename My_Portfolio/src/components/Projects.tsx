@@ -30,7 +30,7 @@ const Projects = () => {
               animate={isInView ? { x: 0, opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: index * 0.2 }}
             >
-              <a src="data.link" target="_blank">
+              <a href="data.link" target="_blank">
               <img
                 src={data.image}
                 height={200}
