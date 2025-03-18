@@ -30,14 +30,12 @@ const Projects = () => {
               animate={isInView ? { x: 0, opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: index * 0.2 }}
             >
-              <a href="data.link" target="_blank">
               <img
                 src={data.image}
                 height={200}
                 width={200}
                 className="rounded-lg"
               />
-              </a>
             </motion.div>
 
             {/* Details Section - Slide In From Right */}
