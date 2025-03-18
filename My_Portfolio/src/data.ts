@@ -57,7 +57,7 @@ export const PROJECTS = [
   },
   {
     title: "Chat Application",
-    image: image3,
+    image: image4,
     description:
       "A chat application for seamless real time communication",
     technologies: ["Node.js","socket.io","express","react","tailwind"],
