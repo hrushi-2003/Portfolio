@@ -1,72 +1,139 @@
-import image1 from "./assets/images/image1.png";
-import image2 from "./assets/images/image2.png";
-import image3 from "./assets/images/image3.png";
-import image4 from "./assets/images/image4.png";
+import blogScreenshot from "./assets/images/blog-preview.webp";
+import chatScreenshot from "./assets/images/chat-preview.webp";
+import developmentIcon from "./assets/visuals/backend.png";
+import aiIcon from "./assets/visuals/creator.png";
+import realtimeIcon from "./assets/visuals/mobile.png";
+import cloudIcon from "./assets/visuals/web.png";
 
-export const HERO_CONTENT = `I am an enthusiastic full stack developer with a strong foundation in building dynamic and responsive web applications. Proficient in front-end technologies like React and back-end technologies such as Node.js and Express, I have hands-on experience with MongoDB for database management. My focus is on crafting user-friendly, scalable solutions that enhance user experience and meet business goals. I’m eager to bring my skills and passion for development to a growth-oriented company where I can contribute to impactful projects and continue learning.`;
+export const PROFILE = {
+  name: "Hrushikesh Reddy Kalsani",
+  firstName: "Hrushikesh",
+  role: "Full Stack Engineer",
+};
 
-export const ABOUT_TEXT = `'I am a dedicated and versatile full stack developer with a passion for creating efficient and user-friendly web applications. As a fresher, I have gained experience working with technologies such as MongoDB, Node.js, Express, React, and Tailwind CSS through various projects. My journey in web development is fueled by a strong curiosity and a desire to learn continuously. I thrive in collaborative environments and enjoy tackling complex problems. Outside of coding, I stay active and explore new technologies.'`;
+export const LINKS = {
+  resume: import.meta.env.BASE_URL + "resume.pdf",
+  github: "https://github.com/hrushi-2003/",
+  linkedin: "https://www.linkedin.com/in/hrushikesh-reddy-kalsani/",
+};
 
-export const EDUCATION = [
+export const HERO_CONTENT =
+  "I build responsive web apps, scalable APIs, and AI integrations.";
+
+export const ABOUT_TEXT =
+  "I’m a full stack engineer who builds responsive web interfaces with React and TypeScript and develops APIs with Python, Django, Node.js, and Express. My work includes real-time messaging and calling, Kafka workflows, and AI integrations. I use PostgreSQL, MongoDB, and Redis for data and deploy applications with Docker and AWS.";
+
+export const FOCUS_AREAS = [
+  { title: "Full Stack Development", icon: developmentIcon },
+  { title: "Real-Time Systems", icon: realtimeIcon },
+  { title: "Cloud & DevOps", icon: cloudIcon },
+  { title: "AI Integrations", icon: aiIcon },
+];
+
+export const EXPERIENCE = [
   {
-    year: "2020/12 - 2024/04",
-    degree: "Bachelor of Technology in Computer Science",
-    institution: "MLR Institute of Technology and Management",
-    GPA: "7.90",
-    location: "Hyderabad, India",
+    role: "Full Stack Developer",
+    company: "TIQO Technologies",
+    dates: "June 2025 – Present",
+    highlights: [
+      "Develop REST APIs and backend services with Django, Django REST Framework, Node.js, and Express, and optimize queries in PostgreSQL and MySQL.",
+      "Build real-time messaging and calling with Django Channels, WebSockets, Redis, and Agora.",
+      "Implement asynchronous workflows with Apache Kafka and connect AI models to application features through backend APIs.",
+      "Deploy Dockerized applications on AWS using EC2, S3, CloudFront, and Secrets Manager. Build email workflows with IMAP and SMTP.",
+      "Contribute to the React Native app and integrate backend services with Zustand for state management.",
+    ],
   },
   {
-    year: "2018/06 - 2020/04",
-    degree: "Intermediate",
-    institution: "Narayana Junior College",
-    GPA: "9.4",
-    location: "Hyderabad, India",
-  },
-  {
-    year: "2017/06 - 2018/04",
-    degree: "Secondary School Certificate (S.S.C)",
-    institution: "Maharshi Vidhyalaya High School",
-    GPA: "9.2",
-    location: "Mahabubabad",
+    role: "Full Stack Developer Intern",
+    company: "Morphius",
+    dates: "January 2025 – June 2025",
+    highlights: [
+      "Built REST APIs and real-time features with Node.js, Express, and Socket.IO.",
+      "Worked with MongoDB and PostgreSQL to store data and improve data access.",
+      "Integrated AWS services for deployments and collaborated on AI-based recommendation systems.",
+    ],
   },
 ];
 
-export const PROJECTS = [
+export const SKILL_GROUPS = [
+  { title: "Programming", items: "Python, Java, SQL" },
   {
-    title: "Blogging Website",
-    image: image1,
-    description: "A Blogging website where user can make their own blogs",
-    technologies: ["tailwind", "React", "Node.js", "Postgresql"],
-    link:"https://blog-website-one-wheat.vercel.app/signup"
+    title: "Frontend",
+    items: "React, Next.js, JavaScript, TypeScript, HTML, CSS, Tailwind CSS, Zustand",
   },
   {
-    title: "Payments app",
-    image: image2,
-    description:
-      "“A secure and user-friendly payments app enabling seamless transactions and efficient session management with MongoDB and Mongoose.”",
-    technologies: ["tailwind", "React", "Node.js", "MongoDB"],
-    link:"https://github.com/hrushi-2003/hrushiPay-project"
+    title: "Backend",
+    items: "Django, Django REST Framework, Node.js, Express, NestJS, Cloudflare Workers, Prisma",
   },
+  { title: "Databases", items: "PostgreSQL, MySQL, MongoDB, SQLite" },
   {
-    title: "Hotel Menu project",
-    image: image3,
-    description:
-      "simple python  project which calculates the total amount to be paid for order you have made ",
-    technologies: ["python"],
-    link:"https://github.com/hrushi-2003/hotel-menu-python-project"
+    title: "AI & LLMs",
+    items: "Ollama, Whisper, local LLM integration, speech-to-text, knowledge-grounded responses",
   },
+  { title: "DevOps & Tools", items: "Docker, Apache Kafka, Redis, Celery, Git, GitHub" },
   {
-    title: "Chat Application",
-    image: image4,
-    description:
-      "A chat application for seamless real time communication",
-    technologies: ["Node.js","socket.io","express","react","tailwind"],
-    link:"https://chatapplication-h1ll.onrender.com"
-  }
+    title: "Cloud",
+    items: "AWS EC2, S3, CloudFront, Secrets Manager, S3-compatible object storage",
+  },
+  { title: "Integrations", items: "WebSockets, IMAP, SMTP, Firebase, Agora" },
 ];
+
+type ProjectLink = {
+  label: "GitHub" | "Live demo";
+  href: string;
+};
+
+export type Project = {
+  title: string;
+  description: string;
+  technologies: string[];
+  links: ProjectLink[];
+  date?: string;
+  image?: { src: string; alt: string };
+};
+
+export const PROJECTS: Project[] = [
+  {
+    title: "AI-Powered Customer Support Platform",
+    description:
+      "Cluevia is a multi-tenant support workspace with role-based access, live ticket conversations, and an embeddable widget. Ollama and Whisper classify tickets, transcribe recordings, and draft replies grounded in the knowledge base. Celery handles background jobs and SLA alerts.",
+    technologies: ["Ollama", "Whisper", "Celery", "WebSockets"],
+    links: [{ label: "GitHub", href: "https://github.com/hrushi-2003/cluevia" }],
+  },
+  {
+    title: "Real-Time Chat Application",
+    date: "March 2025",
+    image: { src: chatScreenshot, alt: "HrushiChats interface showing a sample conversation" },
+    description:
+      "A messaging app that delivers text and images in real time with Socket.IO. Node.js and Express power the APIs, MongoDB stores conversations, and React with Zustand keeps the interface in sync.",
+    technologies: ["React", "Zustand", "Node.js", "Express", "MongoDB", "Socket.IO"],
+    links: [{ label: "Live demo", href: "https://chatapplication-h1ll.onrender.com/" }],
+  },
+  {
+    title: "Serverless Blogging Platform",
+    date: "November 2024",
+    image: { src: blogScreenshot, alt: "Serverless Blogging Platform signup screen" },
+    description:
+      "A blogging platform with a Hono API running on Cloudflare Workers. It uses PostgreSQL with Prisma ORM and Prisma Accelerate to manage database queries and connection pooling.",
+    technologies: ["Cloudflare Workers", "Hono", "PostgreSQL", "Prisma"],
+    links: [
+      { label: "GitHub", href: "https://github.com/hrushi-2003/Blog_website" },
+      { label: "Live demo", href: "https://blog-website-one-wheat.vercel.app/signup" },
+    ],
+  },
+];
+
+export const EDUCATION = {
+  degree: "B.Tech in Computer Science",
+  institution: "Marri Laxman Reddy Institute of Technology and Management",
+  dates: "December 2020 – April 2024",
+  location: "Hyderabad, Telangana",
+  cgpa: "7.9 / 10",
+};
 
 export const CONTACT = {
-  address: "Mahabubabad,Telangana,India",
-  phoneNo: "+91 9885476998 ",
+  location: "Gachibowli, Hyderabad, Telangana",
+  phone: "+91 98854 76998",
+  phoneHref: "tel:+919885476998",
   email: "hrushikesh200802@gmail.com",
 };

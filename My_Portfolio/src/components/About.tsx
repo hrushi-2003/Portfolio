@@ -1,54 +1,22 @@
-import { ABOUT_TEXT } from "../data";
-import { motion } from "framer-motion";
-import Photo from "../assets/images/Photo.jpeg";
-const About = () => {
+import { ABOUT_TEXT, FOCUS_AREAS } from "../data";
+import SectionHeading from "./SectionHeading";
+
+export default function About() {
   return (
-    <div className="flex flex-col items-center p-10 pb-40">
-      {/* About Me Text Animation on Scroll */}
-      <motion.div
-        className="text-gray-400 text-3xl"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }} // Ensures animation happens once
-        transition={{ duration: 1 }}
-      >
-        About Me
-      </motion.div>
+    <section id="about" className="page-section" aria-labelledby="about-title">
+      <SectionHeading id="about-title" label="Introduction" title="Overview." />
+      <p className="section-copy mt-4">{ABOUT_TEXT}</p>
 
-      {/* Grid Section with Animations */}
-      <motion.div
-        className="grid grid-cols-2 mt-32"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }} // Ensures animation happens once
-        transition={{ duration: 1, delay: 0.5 }}
-      >
-        {/* Image Animation */}
-        <motion.img
-          src={Photo}
-          alt="about"
-          width={300}
-          height={75}
-          className="justify-self-center rounded-lg"
-          initial={{ x: -100, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true }} // Ensures animation happens once
-          transition={{ duration: 1 }}
-        />
-
-        {/* Text Animation */}
-        <motion.div
-          className="text-gray-300 mt-20 text-xl"
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }} // Ensures animation happens once
-          transition={{ duration: 1, delay: 1 }}
-        >
-          {ABOUT_TEXT}
-        </motion.div>
-      </motion.div>
-    </div>
+      <ul className="focus-grid">
+        {FOCUS_AREAS.map(({ title, icon }) => (
+          <li key={title} className="focus-card">
+            <div className="focus-card-content">
+              <img src={icon} alt="" width="64" height="64" loading="lazy" />
+              <h3 className="text-xl font-bold">{title}</h3>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
-};
-
-export default About;
+}

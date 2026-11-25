@@ -1,111 +1,54 @@
-import { motion } from "framer-motion";
+import { FaAws, FaDocker, FaNodeJs, FaPython, FaReact } from "react-icons/fa";
 import {
-  FaReact,
-  FaNodeJs,
-  FaPython,
-  FaJava,
-  FaDatabase,
-  FaGithub,
-  FaHtml5,
-  FaCss3,
-} from "react-icons/fa";
-import { useInView } from "react-intersection-observer";
+  SiApachekafka,
+  SiCloudflareworkers,
+  SiDjango,
+  SiMongodb,
+  SiNextdotjs,
+  SiPostgresql,
+  SiRedis,
+  SiTypescript,
+} from "react-icons/si";
+import { SKILL_GROUPS } from "../data";
 
-const Technology = () => {
-  // Create the intersection observer hook for detecting when the component is in view
-  const { ref, inView } = useInView({
-    triggerOnce: true, // Trigger the animation only once
-    threshold: 0.7, // Element is considered in view when 70% is visible
-  });
+const technologies = [
+  { name: "Python", Icon: FaPython, color: "#3776ab" },
+  { name: "Django", Icon: SiDjango, color: "#125840" },
+  { name: "Node.js", Icon: FaNodeJs, color: "#4f8f45" },
+  { name: "TypeScript", Icon: SiTypescript, color: "#3178c6" },
+  { name: "React", Icon: FaReact, color: "#087ea4" },
+  { name: "Next.js", Icon: SiNextdotjs, color: "#242038" },
+  { name: "PostgreSQL", Icon: SiPostgresql, color: "#336791" },
+  { name: "MongoDB", Icon: SiMongodb, color: "#16864e" },
+  { name: "Redis", Icon: SiRedis, color: "#c83037" },
+  { name: "Apache Kafka", Icon: SiApachekafka, color: "#231f32" },
+  { name: "Docker", Icon: FaDocker, color: "#087db7" },
+  { name: "AWS", Icon: FaAws, color: "#a85312" },
+  { name: "Cloudflare Workers", Icon: SiCloudflareworkers, color: "#c75a18" },
+];
 
+export default function Technology() {
   return (
-    <div ref={ref}>
-      <h1 className="text-3xl text-gray-400 text-center pb-24">Technologies</h1>
-      <div className="flex justify-center">
-        <div className="flex justify-center gap-4 pb-24">
-          {/* React Icon */}
-          <motion.div
-            className="border border-neutral-800 p-8"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
-            transition={{ duration: 0.6 }}
-          >
-            <FaReact className="text-blue-400 text-7xl" />
-          </motion.div>
-
-          {/* Node.js Icon */}
-          <motion.div
-            className="border border-neutral-800 p-8"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <FaNodeJs className="text-blue-400 text-7xl" />
-          </motion.div>
-
-          {/* Python Icon */}
-          <motion.div
-            className="border border-neutral-800 p-8"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <FaPython className="text-blue-400 text-7xl" />
-          </motion.div>
-
-          {/* Java Icon */}
-          <motion.div
-            className="border border-neutral-800 p-8"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <FaJava className="text-blue-400 text-7xl" />
-          </motion.div>
-
-          {/* Database Icon */}
-          <motion.div
-            className="border border-neutral-800 p-8"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <FaDatabase className="text-blue-400 text-7xl" />
-          </motion.div>
-
-          {/* GitHub Icon */}
-          <motion.div
-            className="border border-neutral-800 p-8"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <FaGithub className="text-blue-400 text-7xl" />
-          </motion.div>
-
-          {/* HTML5 Icon */}
-          <motion.div
-            className="border border-neutral-800 p-8"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            <FaHtml5 className="text-blue-400 text-7xl" />
-          </motion.div>
-
-          {/* CSS3 Icon */}
-          <motion.div
-            className="border border-neutral-800 p-8"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-          >
-            <FaCss3 className="text-blue-400 text-7xl" />
-          </motion.div>
-        </div>
-      </div>
-    </div>
+    <section id="skills" className="page-section" aria-labelledby="skills-title">
+      <h2 id="skills-title" className="sr-only">Technical Skills</h2>
+      <ul className="technology-orbs">
+        {technologies.map(({ name, Icon, color }) => (
+          <li key={name} className="technology-item" title={name}>
+            <span className="skill-orb" aria-hidden="true">
+              <Icon style={{ color }} />
+            </span>
+            <span className="sr-only">{name}</span>
+          </li>
+        ))}
+      </ul>
+      <dl className="mt-12 grid grid-cols-1 gap-5 sm:mt-16 md:grid-cols-2">
+        {SKILL_GROUPS.map(({ title, items }) => (
+          <div key={title} className="rounded-2xl bg-tertiary p-5">
+            <dt className="font-bold">{title}</dt>
+            <dd className="mt-2 text-sm leading-6 text-secondary sm:text-base">{items}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
   );
-};
-
-export default Technology;
+}

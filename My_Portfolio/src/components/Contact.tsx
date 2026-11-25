@@ -1,72 +1,56 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import type { FormEvent } from "react";
 import { CONTACT } from "../data";
+import ModelView from "./ModelView";
+import SectionHeading from "./SectionHeading";
 
-const Contact = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-30% 0px -30% 0px" }); // Trigger at 70%
+function openEmailDraft(event: FormEvent<HTMLFormElement>) {
+  event.preventDefault();
 
+  const fields = new FormData(event.currentTarget);
+  const name = String(fields.get("name")).trim();
+  const email = String(fields.get("email")).trim();
+  const message = String(fields.get("message")).trim();
+  const subject = encodeURIComponent("Portfolio inquiry from " + name);
+  const body = encodeURIComponent(message + "\n\n" + name + "\n" + email);
+
+  window.location.href = "mailto:" + CONTACT.email + "?subject=" + subject + "&body=" + body;
+}
+
+export default function Contact() {
   return (
-    <motion.div
-      ref={ref}
-      className="pb-4 mb-10"
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      transition={{ staggerChildren: 0.3 }}
-    >
-      {/* Heading */}
-      <motion.h1
-        className="text-4xl text-gray-400 text-center pt-10 pb-10"
-        variants={{
-          hidden: { opacity: 0, y: -50 },
-          visible: { opacity: 1, y: 0 },
-        }}
-        transition={{ duration: 0.6 }}
-      >
-        Contact Information
-      </motion.h1>
+    <div className="contact-area">
+      <section id="contact" className="page-section" aria-labelledby="contact-title">
+        <div className="contact-layout">
+          <div className="contact-panel">
+            <SectionHeading id="contact-title" label="Get in touch" title="Contact." />
+            <address className="mt-4 space-y-1 break-words not-italic leading-relaxed text-secondary">
+              <p>{CONTACT.location}</p>
+              <p><a href={CONTACT.phoneHref}>{CONTACT.phone}</a></p>
+              <p><a href={"mailto:" + CONTACT.email}>{CONTACT.email}</a></p>
+            </address>
 
-      <div className="flex justify-center">
-        <div className="text-xl text-gray-400">
-          {/* Address */}
-          <motion.h1
-            className="p-2"
-            variants={{
-              hidden: { opacity: 0, x: -100 },
-              visible: { opacity: 1, x: 0 },
-            }}
-            transition={{ duration: 0.6 }}
-          >
-            {CONTACT.address}
-          </motion.h1>
+            <form className="mt-9 flex flex-col gap-6" onSubmit={openEmailDraft}>
+              <label className="contact-field">
+                Your name
+                <input name="name" autoComplete="name" placeholder="Name" required maxLength={120} />
+              </label>
+              <label className="contact-field">
+                Your email
+                <input name="email" type="email" autoComplete="email" placeholder="Email address" required maxLength={254} />
+              </label>
+              <label className="contact-field">
+                Your message
+                <textarea name="message" rows={5} placeholder="What would you like to discuss?" required maxLength={2000} />
+              </label>
+              <button className="contact-submit" type="submit">Open email draft</button>
+            </form>
+          </div>
 
-          {/* Email */}
-          <motion.h1
-            className="underline p-2"
-            variants={{
-              hidden: { opacity: 0, y: 100 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            transition={{ duration: 0.6 }}
-          >
-            {CONTACT.email}
-          </motion.h1>
-
-          {/* Phone Number */}
-          <motion.h1
-            className="text-center p-2"
-            variants={{
-              hidden: { opacity: 0, x: 100 },
-              visible: { opacity: 1, x: 0 },
-            }}
-            transition={{ duration: 0.6 }}
-          >
-            {CONTACT.phoneNo}
-          </motion.h1>
+          <div className="contact-art">
+            <ModelView kind="planet" />
+          </div>
         </div>
-      </div>
-    </motion.div>
+      </section>
+    </div>
   );
-};
-
-export default Contact;
+}
